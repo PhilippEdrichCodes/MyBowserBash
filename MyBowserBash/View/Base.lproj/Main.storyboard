@@ -51,7 +51,7 @@
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="bossButtonPressed:" destination="37t-B9-Cij" eventType="touchUpInside" id="c8g-Ry-OGD"/>
+                                            <action selector="bossTapped:" destination="37t-B9-Cij" eventType="touchUpInside" id="kxQ-dh-c5d"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -97,7 +97,7 @@
                                                             <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="mageButtonPressed:" destination="37t-B9-Cij" eventType="touchUpInside" id="cdd-cj-K5l"/>
+                                                            <action selector="leftHeroTapped:" destination="37t-B9-Cij" eventType="touchUpInside" id="19Z-S6-OYs"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -137,7 +137,7 @@
                                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="fighterButtonPressen:" destination="37t-B9-Cij" eventType="touchUpInside" id="uc6-Ag-zD5"/>
+                                                            <action selector="rightHeroTapped:" destination="37t-B9-Cij" eventType="touchUpInside" id="468-Ic-eTf"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -163,14 +163,14 @@
                         <outlet property="bossImageView" destination="uXZ-t6-QW6" id="Nku-js-k9R"/>
                         <outlet property="bossLifeLabel" destination="2Ok-Q2-z7y" id="H9P-UC-u2Y"/>
                         <outlet property="bossNameLabel" destination="QJj-kf-Dib" id="xP5-5P-1Fu"/>
-                        <outlet property="fighterButton" destination="1qe-Qe-kA9" id="fHu-te-EWi"/>
-                        <outlet property="fighterImageView" destination="TMm-LC-jUw" id="Pmw-NQ-EQH"/>
-                        <outlet property="fighterLifeLabel" destination="kjT-HE-Tfy" id="kQt-1t-zm6"/>
-                        <outlet property="fighterNameLabel" destination="GHu-5d-I82" id="KQc-BL-ued"/>
-                        <outlet property="magicianButton" destination="prO-fc-pyf" id="Y6R-6H-tIA"/>
-                        <outlet property="magicianImageView" destination="KPI-jI-xbJ" id="ACh-EX-KSK"/>
-                        <outlet property="magicianLifeLabel" destination="jah-MY-ALd" id="qVx-k3-7XH"/>
-                        <outlet property="magicianNameLabel" destination="aMg-JB-Td8" id="xQp-bO-YOQ"/>
+                        <outlet property="leftHeroButton" destination="prO-fc-pyf" id="Y6R-6H-tIA"/>
+                        <outlet property="leftHeroImageView" destination="KPI-jI-xbJ" id="ACh-EX-KSK"/>
+                        <outlet property="leftHeroLifeLabel" destination="jah-MY-ALd" id="qVx-k3-7XH"/>
+                        <outlet property="leftHeroNameLabel" destination="GHu-5d-I82" id="b3c-N9-79G"/>
+                        <outlet property="rightHeroButton" destination="1qe-Qe-kA9" id="fHu-te-EWi"/>
+                        <outlet property="rightHeroImageView" destination="TMm-LC-jUw" id="Pmw-NQ-EQH"/>
+                        <outlet property="rightHeroLifeLabel" destination="kjT-HE-Tfy" id="kQt-1t-zm6"/>
+                        <outlet property="rightHeroNameLabel" destination="aMg-JB-Td8" id="Xyj-Le-u7T"/>
                         <segue destination="z5n-qR-NcK" kind="presentation" identifier="resultSegue" id="BmJ-vp-Zao"/>
                     </connections>
                 </viewController>

@@ -26,25 +26,25 @@ class Character {
         self.life = life
     }
     
-    func doSomething() -> Int{
+    func doSomething(to target: Character) -> Int{
         
         let chooseAction = Int.random(in: 1...100)
         var effect = 0
         
         switch chooseAction {
-        case 71 ... 100: effect = secondaryAction()
-        default: effect = primaryAction()
+        case 71 ... 100: effect = secondaryAction(to: target)
+        default: effect = primaryAction(to: target)
         }
         
         return effect
         
     }
     
-    func primaryAction() -> Int{
+    func primaryAction(to target: Character) -> Int{
         return 10
     }
     
-    func secondaryAction() -> Int {
+    func secondaryAction(to target: Character) -> Int {
         return 20
     }
     

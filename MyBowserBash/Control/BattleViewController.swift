@@ -8,28 +8,38 @@
 import UIKit
 
 class BattleViewController: UIViewController {
-    
-    @IBOutlet weak var magicianButton: UIButton!
-    @IBOutlet weak var magicianNameLabel: UILabel!
-    @IBOutlet weak var magicianLifeLabel: UILabel!
-    @IBOutlet weak var magicianImageView: UIImageView!
-    
-    @IBOutlet weak var fighterButton: UIButton!
-    @IBOutlet weak var fighterNameLabel: UILabel!
-    @IBOutlet weak var fighterLifeLabel: UILabel!
-    @IBOutlet weak var fighterImageView: UIImageView!
-    
+  
+    // MARK: - Outlets
+        
+    // set outlets for managing ui elements
+    // hero1
+    @IBOutlet weak var leftHeroButton: UIButton!
+    @IBOutlet weak var leftHeroNameLabel: UILabel!
+    @IBOutlet weak var leftHeroLifeLabel: UILabel!
+    @IBOutlet weak var leftHeroImageView: UIImageView!
+    // hero2
+    @IBOutlet weak var rightHeroButton: UIButton!
+    @IBOutlet weak var rightHeroNameLabel: UILabel!
+    @IBOutlet weak var rightHeroLifeLabel: UILabel!
+    @IBOutlet weak var rightHeroImageView: UIImageView!
+    // foe
     @IBOutlet weak var bossButton: UIButton!
     @IBOutlet weak var bossNameLabel: UILabel!
     @IBOutlet weak var bossLifeLabel: UILabel!
     @IBOutlet weak var bossImageView: UIImageView!
     
+    // MARK: - Properties
+    
+    // game engine
     var engine = Engine(evils: [Character()], heroes: [Character()])
     
+    // fighters
     var boss = Boss()
-    var mage = Mage()
-    var fighter = Fighter()
+    var hero1 = Mage()
+    var hero2 = Fighter()
 
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,58 +52,74 @@ class BattleViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onRestart(_:)), name: NSNotification.Name.init("restartGame"), object: nil)
     }
     
+    // MARK: - Objective-C selector methods
+    
     @objc func onRestart(_ notification: NSNotification) {
+        // set game engine to start defaults
         prepareEngine()
+        // initialize ui
         initGame()
     }
+    
+    // MARK: - Initialize Game
 
     func prepareEngine() {
-        
-        //participants
-        engine.evils[0] = boss
-        engine.heroes[0] = mage
-        engine.heroes[1] = fighter
         
         engine.turn = 1
         engine.action = 0
         
+        engine.isPlayersTurn = true
         engine.won = false
         engine.fightIsOn = true
         
+        setCombatants()
     }
     
-    func setParticipants() {
+    func setCombatants() {
         
         self.boss = engine.evils[0] as! Boss
-        self.mage = engine.heroes[0] as! Mage
-        self.fighter = engine.heroes[1] as! Fighter
+        self.hero1 = engine.heroes[0] as! Mage
+        self.hero2 = engine.heroes[1] as! Fighter
     }
     
     func initGame() {
         
-        setParticipants()
-        
-        magicianButton.isEnabled = true
-        fighterButton.isEnabled = true
-        bossButton.isEnabled = false
-        
         updateLifeLabels()
+        updateButtons()
     }
+    
+    // MARK: - Update UI
         
     func updateLifeLabels(){
-        magicianLifeLabel.text = "\(mage.life)"
-        fighterLifeLabel.text = "\(fighter.life)"
+        leftHeroLifeLabel.text = "\(hero1.life)"
+        rightHeroLifeLabel.text = "\(hero2.life)"
         bossLifeLabel.text = "\(boss.life)"
     }
     
-    @IBAction func bossButtonPressed(_ sender: UIButton) {
+    func updateButtons() {
+        let playersTurn = engine.isPlayersTurn
+        switch playersTurn {
+        case true:
+            bossButton.isEnabled = false
+            leftHeroButton.isEnabled = true
+            rightHeroButton.isEnabled = true
+        case false:
+            bossButton.isEnabled = true
+            leftHeroButton.isEnabled = false
+            rightHeroButton.isEnabled = false
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func bossTapped(_ sender: UIButton) {
         
     }
     
-    @IBAction func mageButtonPressed(_ sender: UIButton) {
+    @IBAction func leftHeroTapped(_ sender: UIButton) {
     }
     
-    @IBAction func fighterButtonPressen(_ sender: UIButton) {
+    @IBAction func rightHeroTapped(_ sender: UIButton) {
     }
     
 }

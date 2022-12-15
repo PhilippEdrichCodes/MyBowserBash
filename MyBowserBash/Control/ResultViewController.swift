@@ -18,7 +18,8 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if won {
+        switch won {
+        case true:
             resultLabel.text = "Hooray! You won!"
             
             resultImage.image = UIImage(systemName: "heart.circle.fill")
@@ -26,9 +27,7 @@ class ResultViewController: UIViewController {
             
             restartButton.setTitle("Attack another foe", for: .normal)
             restartButton.backgroundColor = UIColor.systemGreen
-        }
-        else
-        {
+        case false:
             resultLabel.text = "Ouch! You lost!"
             
             resultImage.image = UIImage(systemName: "heart.slash.circle.fill")

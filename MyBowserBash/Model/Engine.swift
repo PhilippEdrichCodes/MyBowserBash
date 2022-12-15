@@ -14,6 +14,7 @@ struct Engine {
     
     var fightIsOn = true
     var won = false
+    var isPlayersTurn = true
     
     var turn = 1
     var action = 0
